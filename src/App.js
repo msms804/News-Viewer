@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+
+import React, { useState, useCallback } from 'react';
+import axios from 'axios';
+import NewsList from './components/NewsList';
+import Categories from './components/Categories';
+import { Route, Routes } from 'react-router-dom';
+import NewsPage from './pages/NewsPages';
 
 function App() {
+  /**
+  const [category, setCategory] = useState('all');
+  const onSelect = useCallback(category => setCategory(category), []);
+   */
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/*
+      <Categories category={category} onSelect={onSelect} />
+      <NewsList category={category} />
+      */}
+      <Routes>
+        <Route path="/" element={<NewsPage />} />
+        <Route path="/:category" element={<NewsPage />} />
+      </Routes>
+    </>
   );
 }
 
